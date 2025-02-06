@@ -4,7 +4,7 @@ An implentation of the CDR architecture described by Ahmed and Kwasniewski (See 
 
 ## Dependencies
 
-Simulation uses Icarus Verilog, and the waveforms are viewed with GTKWave. Both of which have prepackaged binaries.
+Simulation uses Icarus Verilog (iverilog), and the waveforms are viewed with GTKWave. Both of which have prepackaged binaries.
 
 ## References
 

@@ -1,4 +1,4 @@
-all: phase_generator mux8 phase_rotator
+all: phase_generator mux8 phase_rotator clock_divider
 
 phase_generator: phase_generator.v phase_generator_tb.v
 	iverilog -o phase_generator_tb.vvp phase_generator_tb.v
@@ -14,6 +14,11 @@ phase_rotator: phase_rotator.v phase_rotator_tb.v
 	iverilog -o phase_rotator_tb.vvp phase_rotator_tb.v
 	vvp phase_rotator_tb.vvp
 	gtkwave phase_rotator_tb.vcd
+
+clock_divider: clock_divider4.v clock_divider4_tb.v
+	iverilog -o clock_divider4_tb.vvp clock_divider4_tb.v
+	vvp clock_divider4_tb.vvp
+	gtkwave clock_divider4_tb.vcd
 
 clean:
 	rm -f *.vvp *.vcd
