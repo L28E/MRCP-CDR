@@ -1,4 +1,7 @@
-all: phase_generator mux8 phase_rotator clock_divider phase_detector filter
+cdr: cdr.v cdr_tb.v phase_generator.v mux8.v phase_rotator.v clock_divider4.v phase_detector.v filter.v prbs.v
+	iverilog -o cdr_tb.vvp cdr_tb.v
+	vvp cdr_tb.vvp
+	gtkwave cdr_tb.vcd
 
 phase_generator: phase_generator.v phase_generator_tb.v
 	iverilog -o phase_generator_tb.vvp phase_generator_tb.v

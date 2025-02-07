@@ -1,7 +1,7 @@
 /* 
     Bang Bang phase detector, used to determine if we are in phase with the incoming data.
 */
-module phasedetector(input Din,
+module phase_detector(input Din,
                      input clk_early,
                      input clk_edge,
                      input clk_late,
