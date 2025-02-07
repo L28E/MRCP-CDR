@@ -10,7 +10,7 @@ phasedetector uut(Din, clk_early, clk_edge, clk_late, rst, up, down);
 
 task init;
     begin
-        rst=0;
+        rst=1;
         Din=0;
         clk_early=0;
         clk_edge=0;
@@ -20,9 +20,9 @@ endtask
 
 task reset;
     begin
-        rst=1;
-        #5;
         rst=0;
+        #5;
+        rst=1;
     end
 endtask
 

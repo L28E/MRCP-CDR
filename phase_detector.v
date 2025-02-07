@@ -13,8 +13,8 @@ reg reg_early;
 reg reg_edge;
 reg reg_late;
 
-always @(posedge clk_early or posedge clk_edge or posedge clk_late or posedge rst)
-    if (rst)begin
+always @(posedge clk_early or posedge clk_edge or posedge clk_late or negedge rst)
+    if (~rst)begin
         reg_early <= 0;
         reg_edge <= 0;
         reg_late <= 0;
