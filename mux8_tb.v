@@ -7,7 +7,7 @@ module mux8_tb;
     reg [2:0] select;
     wire out;
 
-    mux8 uut(in,select,out);
+    mux8 uut(in[0],in[1],in[2],in[3],in[4],in[5],in[6],in[7],select,out);
 
     initial begin        
         $dumpfile("mux8_tb.vcd");

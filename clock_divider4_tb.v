@@ -18,11 +18,11 @@ module clock_divider4_tb;
         $dumpvars(0,clock_divider4_tb);
 
         clk_in = 0;
-        rst = 1;
-        #20;
         rst = 0;
-        #200;
+        #20;
         rst = 1;
+        #200;
+        rst = 0;
         #5;
 
         $finish;    

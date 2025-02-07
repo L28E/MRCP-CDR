@@ -10,7 +10,7 @@ module phase_generator_tb;
     phase_generator uut(clk,rst,phase);
 
     always begin
-	    #5 clk = ~clk;
+	    #1 clk = ~clk;
     end
 
     initial begin        
@@ -18,11 +18,11 @@ module phase_generator_tb;
         $dumpvars(0,phase_generator_tb);
 
         clk = 0;
-        rst = 1;
-        #20;
         rst = 0;
-        #100;
+        #20;
         rst = 1;
+        #100;
+        rst = 0;
         #5;
 
         $finish;

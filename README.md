@@ -1,10 +1,12 @@
 # Multiple Rotating Clock Phase Architecture for Clock and Data Recovery
 
-An implentation of the CDR architecture described by Ahmed and Kwasniewski (See [references](#references))
+An implentation of the CDR architecture described by Ahmed and Kwasniewski (See [references](#references)) in Verilog. The block diagram is as follows:
+
+![CDR Block Diagram](./img/CDR_block_diagram.png)
 
 ## Dependencies
 
-Simulation uses Icarus Verilog (iverilog), and the waveforms are viewed with GTKWave. Both of which have prepackaged binaries.
+Simulation uses Icarus Verilog (iverilog), and the waveforms are viewed with GTKWave. Both of which have prepackaged binaries. Make is used to compilation and simulation easy.
 
 ## References
 
