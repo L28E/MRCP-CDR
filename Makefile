@@ -25,5 +25,10 @@ phase_detector: phase_detector.v phase_detector_tb.v
 	vvp phase_detector_tb.vvp
 	gtkwave phase_detector_tb.vcd
 
+filter: filter.v filter_tb.v
+	iverilog -o filter_tb.vvp filter_tb.v
+	vvp filter_tb.vvp
+	gtkwave filter_tb.vcd
+
 clean:
 	rm -f *.vvp *.vcd

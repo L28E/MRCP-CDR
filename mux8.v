@@ -2,6 +2,8 @@ module mux8(input a,b,c,d,e,f,g,h,
             input [2:0] select,
             output reg out);
 
+    //assign out = select[2] ? (select[1] ? (select[0] ? in[7] : in[6]) : (select[0] ? in[5] : in[4])) : (select[1] ? (select[0] ? in[3] : in[2]) : (select[0] ? in[1] : in[0])); 
+
     always @(a or b or c or d or e or f or g or h or select)begin
         case(select)
             3'b000 : out <= a;

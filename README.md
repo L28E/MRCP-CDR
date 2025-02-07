@@ -2,11 +2,15 @@
 
 An implentation of the CDR architecture described by Ahmed and Kwasniewski (See [references](#references)) in Verilog. The block diagram is as follows:
 
-![CDR Block Diagram](./img/CDR_block_diagram.png)
+<p align="center">
+  <img src="./img/CDR_block_diagram.png" />
+</p>
 
 ## Dependencies
 
-Simulation uses Icarus Verilog (iverilog), and the waveforms are viewed with GTKWave. Both of which have prepackaged binaries. Make is used to compilation and simulation easy.
+- Simulation uses Icarus Verilog (iverilog)
+    - Waveforms are viewed with GTKWave 
+- Make is used for easy compilation and simulation
 
 ## References
 
