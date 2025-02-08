@@ -1,10 +1,20 @@
-`timescale 1ns/1ns
+`timescale 1ns/1ps
 `include "cdr.v"
 `include "prbs.v"
 
-// TODO: Looks like it's working, but needs more thorough testing
+/*  
+    We specify the parameters FREQ_COEFF, and REF_CLK_PERIOD where;
+    
+    f_s = FREQ_COEFF * (f_ref/8) 
+    f_ref = 1/REF_CLK_PERIOD
+    tx_clk_period = 1/f_s = 1/(FREQ_COEFF * (f_ref/8)) = REF_CLK_PERIOD * 8 / FREQ_COEFF
 
-module cdr_tb;
+    We'll observe if data_out tracks data_in, and the frequency range over which the CDR can track.
+    Note that the delays will get floored to the nearest integer.         
+*/
+
+module cdr_tb #(parameter FREQ_COEFF = 1.05,
+                parameter REF_CLK_PERIOD = 20);
 
     reg tx_clk;
     reg prbs_rst;
@@ -19,16 +29,18 @@ module cdr_tb;
     cdr cdr_uut(data_in,ref_clk,rst,data_out,clk_out);
 
     always begin
-        #8 tx_clk = ~tx_clk;
+        #(REF_CLK_PERIOD * 8.0 / FREQ_COEFF / 2.0) tx_clk = ~tx_clk;        
     end
 
     always begin
-        #1 ref_clk = ~ref_clk;
+        #(REF_CLK_PERIOD / 2.0) ref_clk = ~ref_clk;
     end
     
     initial begin
         $dumpfile("cdr_tb.vcd");
         $dumpvars(0,cdr_tb);
+        $display ("ref_clk half period = %d",REF_CLK_PERIOD/2.0);
+        $display ("tx_clk half period = %d",REF_CLK_PERIOD * 8 / FREQ_COEFF/2.0);
 
         tx_clk = 0;
         ref_clk = 0;
@@ -37,7 +49,7 @@ module cdr_tb;
 
         #10 prbs_rst = 1;
         #20 rst = 1;
-        #200;
+        #(REF_CLK_PERIOD*1000);
         rst = 0;
         #5;
 
